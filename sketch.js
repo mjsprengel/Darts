@@ -103,7 +103,7 @@ function setup() {
   
   for(var i = 1; i<21; i++){
     stroke(strk);
-    line(width/2, height/2, (((height/16.5)/2)*(cos(TWO_PI/40 + i*(TWO_PI/20))))+width/2, (((height/16.5)/2)*(sin(TWO_PI/40 + i*(TWO_PI/20))))+height/2);
+    line(width/2, height/2, (((height-(height/16.5))/2)*(cos(TWO_PI/40 + i*(TWO_PI/20))))+width/2, (((height-(height/16.5))/2)*(sin(TWO_PI/40 + i*(TWO_PI/20))))+height/2);
     
     fill(81,187,51);
     ellipse(width/2, height/2, height/10, height/10);
