@@ -8,9 +8,9 @@ var current_player = true;
 var clicks = 0;
 var arr = [10,15,2,17,3,19,7,16,8,11,14,9,12,5,20,1,18,4,13,6];
 var alpha = 255;
-
+var thump;
 function preload(){
-  thump = loadsound("thump.mp3"); 
+  thump = loadSound('thump.mp3'); 
 }
 
 function setup() {
