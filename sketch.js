@@ -9,6 +9,10 @@ var clicks = 0;
 var arr = [10,15,2,17,3,19,7,16,8,11,14,9,12,5,20,1,18,4,13,6];
 var alpha = 255;
 
+function preload(){
+  thump = loadsound("thump.mp3"); 
+}
+
 function setup() {
   width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
   height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
@@ -206,6 +210,8 @@ function draw() {
 }
 
 function mousePressed(){
+  thump.setVolume(0.1);
+  thump.play();
   
   var d = dist(mouseX, mouseY, width/2, height/2);
   //double ring
