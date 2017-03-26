@@ -8,6 +8,10 @@ var current_player = true;
 var clicks = 0;
 var arr = [10,15,2,17,3,19,7,16,8,11,14,9,12,5,20,1,18,4,13,6];
 
+function preload(){
+  thump = loadSound('thump.mp3');
+}
+
 function setup() {
   width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
   height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
@@ -179,6 +183,8 @@ function draw() {
 
 function mousePressed(){
   
+  thump.setVolume(0.3);
+  thump.play();
   var d = dist(mouseX, mouseY, width/2, height/2);
   //double ring
   if((d < (height-(height/16.5))/2) && (d > (height-(height/6.62))/2)){
