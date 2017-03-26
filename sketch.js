@@ -504,15 +504,19 @@ function mousePressed(){
   }
   
   //toggling players
-  clicks += 1;
-  if(clicks>=3){
-    current_player = !current_player
-    clicks = 0;
+  if(d < (height-(height/16.5))/2){
+    clicks += 1;
+    if(clicks>=3){
+      current_player = !current_player
+      clicks = 0;
+    }
   }
   
   //resetting score
   if(mouseX > width-69 && mouseY > height-29){
     p1score = 0;
     p2score = 0;
+    clicks = 0;
+    current_player = true;
   }
 }
