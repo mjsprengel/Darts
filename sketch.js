@@ -23,7 +23,7 @@ function setup() {
 function draw() {
  
   //noLoop();
-  background(51);
+  background(20);
   stroke(180);
   fill(0, 0, 0);
   ellipse(width/2, height/2, height-10, height-10);
