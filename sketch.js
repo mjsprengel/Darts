@@ -182,9 +182,7 @@ function draw() {
 }
 
 function mousePressed(){
-  
-  thump.setVolume(0.3);
-  thump.play();
+
   var d = dist(mouseX, mouseY, width/2, height/2);
   //double ring
   if((d < (height-(height/16.5))/2) && (d > (height-(height/6.62))/2)){
@@ -505,6 +503,8 @@ function mousePressed(){
   
   //toggling players
   if(d < (height-(height/16.5))/2){
+    thump.setVolume(0.3);
+    thump.play();
     clicks += 1;
     if(clicks>=3){
       current_player = !current_player
