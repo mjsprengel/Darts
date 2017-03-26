@@ -7,10 +7,7 @@ var height;
 var current_player = true;
 var clicks = 0;
 var arr = [10,15,2,17,3,19,7,16,8,11,14,9,12,5,20,1,18,4,13,6];
-
-function preload(){
-  thump = loadSound('thump.mp3');
-}
+var alpha = 255;
 
 function setup() {
   width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
@@ -29,34 +26,61 @@ function draw() {
   strokeWeight(1);
   
   if(current_player){
-    fill(128 + sin(frameCount*0.1) * 128);
-    textSize(42);
+    fill(128 + sin(frameCount*0.1) * 128, 0, 85);
     textAlign(LEFT);
+    textSize(42 + 1.5*sin(frameCount*0.1));
     text("Unstoppable Force", width/40, height/12);
-    fill(255);
+    fill(0,0,85);
+    textSize(42);
     textAlign(RIGHT);
     text("Immovable Object", 39*width/40, height/12);
     textAlign(CENTER);
     textSize(100)
-    text(p1score, width/7, height/4);
-    textAlign(CENTER);
-    text(p2score, 6*width/7, height/4);
-    
+    noStroke();
+    if(mouseIsPressed && clicks!=0){
+      fill(161,0,255,alpha);
+      text(p1score, width/7, height/4);
+      textAlign(CENTER);
+      fill(161,0,255);
+      text(p2score, 6*width/7, height/4);
+      alpha -= 100;
+
+    } else {
+      alpha = 255;
+      fill(161,0,255);
+      text(p1score, width/7, height/4);
+      textAlign(CENTER);
+      text(p2score, 6*width/7, height/4);
+    }
   }
+  
   if(!current_player){
-    fill(255);
+    fill(0,0,85);
     textSize(42);
     textAlign(LEFT);
     text("Unstoppable Force", width/40, height/12);
-    fill(128 + sin(frameCount*0.1) * 128);
+    textSize(42);
+    fill(128 + sin(frameCount*0.1) * 128, 0, 85);
     textAlign(RIGHT);
+    textSize(42 + 1.5*sin(frameCount*0.1));
     text("Immovable Object", 39*width/40, height/12);
-    fill(255);
     textAlign(CENTER);
     textSize(100)
-    text(p1score, width/7, height/4);
-    textAlign(CENTER);
-    text(p2score, 6*width/7, height/4);
+    noStroke();
+    if(mouseIsPressed && clicks!=0){ //161,0,255
+      fill(161,0,255);
+      text(p1score, width/7, height/4);
+      textAlign(CENTER);
+      fill(161,0,255, alpha);
+      text(p2score, 6*width/7, height/4);
+      alpha -= 100;
+    } else {
+      alpha = 255;
+      fill(161,0,255);
+      text(p1score, width/7, height/4);
+      textAlign(CENTER);
+      text(p2score, 6*width/7, height/4);
+    }
   }
   
   //reset button
@@ -182,7 +206,7 @@ function draw() {
 }
 
 function mousePressed(){
-
+  
   var d = dist(mouseX, mouseY, width/2, height/2);
   //double ring
   if((d < (height-(height/16.5))/2) && (d > (height-(height/6.62))/2)){
@@ -273,13 +297,10 @@ function mousePressed(){
     points = points*2;
     if(current_player){
       p1score += points;
-      redraw();
     }
     if(!current_player){
       p2score += points;
-      redraw();
     }
-    points = 0;
   }
   
   //main rings for singles                                                                150                               
@@ -369,13 +390,10 @@ function mousePressed(){
     
     if(current_player){
       p1score += points;
-      redraw();
     }
     if(!current_player){
       p2score += points;
-      redraw();
     }
-    points = 0;
   }
   
   // TRIPLES!!!
@@ -471,20 +489,16 @@ function mousePressed(){
     if(!current_player){
       p2score += points;
       redraw();
-    }
-    points = 0;
-    
+    }  
   }
   
   //outter bullseye
   if((d < height/20 ) && (d >= height/40)){
     if(current_player){
       p1score += 25;
-      redraw();
     }
     if(!current_player){
       p2score += 25;
-      redraw();
     }
     console.log("OUTTER BULLSEYE");
   }
@@ -492,26 +506,20 @@ function mousePressed(){
   if((d < height/40 )){
     if(current_player){
       p1score += 50;
-      redraw();
     }
     if(!current_player){
       p2score += 50;
-      redraw();
     }
-    console.log("INNER BULLSEYE");
   }
   
   //toggling players
   if(d < (height-(height/16.5))/2){
-    thump.setVolume(0.3);
-    thump.play();
     clicks += 1;
     if(clicks>=3){
       current_player = !current_player
       clicks = 0;
     }
   }
-  
   //resetting score
   if(mouseX > width-69 && mouseY > height-29){
     p1score = 0;
@@ -519,4 +527,6 @@ function mousePressed(){
     clicks = 0;
     current_player = true;
   }
+  
+    points = 0;
 }
