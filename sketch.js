@@ -494,7 +494,7 @@ function mousePressed(){
       p2score += 50;
       redraw();
     }
-    console.log("INNER MOTHERFUCKIN BULLSEYE");
+    console.log("INNER BULLSEYE");
   }
   
   //toggling players
