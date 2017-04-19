@@ -221,8 +221,8 @@ function draw() {
   
   //SCOREBOXES
   for(var i = 4; i<12; i++){
-    line(width/40, i*height/16, 9*width/40, i*height/16); //left scorebox
-    line(39*width/40, i*height/16, 31*width/40, i*height/16); //right scorebox
+    line(width/40, i*height/16, 7*width/40, i*height/16); //left scorebox
+    line(39*width/40, i*height/16, 33*width/40, i*height/16); //right scorebox
   }
   
   textSize(32);
@@ -740,7 +740,7 @@ function checkScore(){
 }
 
 function drawXmark(x, y){ //x, y are center of x
-  var tmpLen = height/36;
+  var tmpLen = height/48;
   strokeWeight(3);
   line(x - (tmpLen), y - (tmpLen), x + (tmpLen), y + (tmpLen));
   line(x + (tmpLen), y - (tmpLen), x - (tmpLen), y + (tmpLen));
