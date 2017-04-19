@@ -12,6 +12,11 @@ var p1Arr = [];
 var p2Arr = []; 
 var p1Ledger = [0,0,0,0,0,0,0];
 var p2Ledger = [0,0,0,0,0,0,0];
+var thump;
+
+function preload(){
+  thump = loadSound('thump.mp3');
+}
 
 function setup() {
   width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
@@ -249,6 +254,8 @@ function draw() {
 
 function mousePressed(){
   
+  thump.setVolume(0.1);
+  thump.play();
   var d = dist(mouseX, mouseY, width/2, height/2);
   
   //double ring
